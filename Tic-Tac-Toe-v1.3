@@ -1,0 +1,356 @@
+#include <iostream>
+using namespace std;
+
+// Tic-Tac-Toe Board
+char board[3][3] = {'-','-','-','-','-','-','-','-','-'};
+int player_one_counter = 0;
+int player_two_counter = 0;
+
+void no_of_games(){
+    
+    cout << "Choose The Amount of Rounds You Want To Play" << endl;
+}
+
+void Intro()
+{
+    cout << "------------------------------------------------------" << endl;
+    cout << "                 T I C - T A C - T O E" << endl;
+    cout << "------------------------------------------------------" << endl;
+    
+    cout << endl << "A two-player game: choose a place (X) to put your marker" << endl;
+    cout << "and your opponent (O) will do the same. The objective is to get" << endl;
+    cout << "three-in-a-row of your respective marker to win." << endl;
+    
+    cout << endl << "Enter any number (1-9) when prompted to choose the" << endl;
+    cout << "corresponding point on the board. GOOD LUCK!" << endl;
+    cout << endl;
+}
+
+
+void Draw() // will print the entire board (3x3 matrix) on the console
+{
+    
+    cout << endl;
+    
+    for (int i = 0; i < 3; i++){
+        cout << "|";
+        for (int j = 0; j < 3; j++){
+            cout << board[i][j];
+            cout << "|";
+        }
+        cout << endl;
+    }
+    
+    cout << endl;
+}
+
+
+void MarkerOptions_X(int selection){ //Allows the user to choose where to place their marker depending on their selected number
+    
+    switch(selection){
+        case 1:
+        board[0][0] = 'X';
+        break;
+        case 2:
+        board[0][1] = 'X';
+        break;
+        case 3:
+        board[0][2] = 'X';
+        break;
+        case 4:
+        board[1][0] = 'X';
+        break;
+        case 5:
+        board[1][1] = 'X';
+        break;
+        case 6:
+        board[1][2] = 'X';
+        break;
+        case 7:
+        board[2][0] = 'X';
+        break;
+        case 8:
+        board[2][1] = 'X';
+        break;
+        case 9:
+        board[2][2] = 'X';
+        break;
+    }
+}
+
+void MarkerOptions_O(int selection){ //Allows the user to choose where to place their marker depending on their selected number
+                
+    switch(selection){
+        
+        case 1:
+        board[0][0] = 'O';
+        break;
+        case 2:
+        board[0][1] = 'O';
+        break;
+        case 3:
+        board[0][2] = 'O';
+        break;
+        case 4:
+        board[1][0] = 'O';
+        break;
+        case 5:
+        board[1][1] = 'O';
+        break;
+        case 6:
+        board[1][2] = 'O';
+        break;
+        case 7:
+        board[2][0] = 'O';
+        break;
+        case 8:
+        board[2][1] = 'O';
+        break;
+        case 9:
+        board[2][2] = 'O';
+        break;
+    }
+}
+
+
+void Reset_Game(){
+    
+    board[0][0] = '-';
+    board[0][1] = '-';
+    board[0][2] = '-';
+    board[1][0] = '-';
+    board[1][1] = '-';
+    board[1][2] = '-';
+    board[2][0] = '-';
+    board[2][1] = '-';
+    board[2][2] = '-';
+    
+}
+
+void Display_Score(){
+    
+    cout << endl;
+    cout << "SCORE" << endl;
+    cout << "PLAYER ONE:" << player_one_counter << endl;
+    cout << "PLAYER_TWO:" << player_two_counter << endl;
+    cout << endl;
+    
+}
+
+
+int main()
+{
+    int player_one, player_two, endgame_count, number_of_games;
+    
+    Intro();
+    Draw();
+    
+    no_of_games();
+    cin >> number_of_games;
+    
+    while(number_of_games > player_one_counter && number_of_games > player_two_counter){
+    
+    endgame_count = 0;
+    
+        while (1){
+            cout << "[PLAYER ONE] TURN: INPUT A VALUE... " << endl;
+            cin >> player_one;
+            MarkerOptions_X(player_one);
+            endgame_count++;
+        
+        Draw();
+        
+        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+        }
+        else if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+                
+                
+        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+                
+        if (endgame_count == 9){
+            cout << "DRAW GAME: TRY AGAIN";
+                break;
+            }
+            
+            cout << "[PLAYER TWO] TURN: INPUT A VALUE... " << endl;
+            cin >> player_two;
+            MarkerOptions_O(player_two);
+            endgame_count++;
+            
+        Draw();
+        
+        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+        else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+        }
+        else if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X'){ 
+            cout << "PLAYER ONE WINS!!" << endl;
+                player_one_counter++;
+                break;
+            }
+                
+                
+        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+        else if (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O'){ 
+            cout << "PLAYER TWO WINS!!" << endl;
+                player_two_counter++;
+                break;
+            }
+                
+        if (endgame_count == 9){
+            cout << "DRAW GAME: TRY AGAIN";
+                break;
+            }
+            
+        }
+        
+        Reset_Game();
+    
+    
+    Display_Score();
+    }
+    
+    
+    return 0;
+}
